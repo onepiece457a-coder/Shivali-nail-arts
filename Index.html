@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So ShinaiLit | Luxury Press-On Nail Art</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff66b2;
+            --secondary: #d44d8c;
+            --accent: #ffcc00;
+            --dark: #2a2a2a;
+            --light: #fff9fd;
+            --gray: #f5f5f5;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 20px 120px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.5rem;
+            color: var(--dark);
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 250px;
+            background-color: var(--gray);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* How It Works */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: var(--gray);
+            background-image: url('https://images.unsplash.com/photo-1607779097338-8e5f4b6c6d0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--gray);
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 80px;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero {
+                padding: 150px 20px 100px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 130px 20px 80px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-sparkles logo-icon"></i>
+                    So ShinaiLit
+                </a>
+                
+                <div class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="#" class="cart-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Nail Art That Sparkles</h1>
+            <p>Luxury press-on nails designed to shine. Customizable, reusable, and perfect for every occasion. Get salon-quality nails in minutes without the salon price.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container" id="products">
+        <h2 class="section-title">Our Collections</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Glitter Galaxy Set</h3>
+                    <div class="product-price">$24.99</div>
+                    <p class="product-description">Sparkling holographic nails with celestial designs. Perfect for parties and special occasions.</p>
+                    <button class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1607779097338-8e5f4b6c6d0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">French Tip Elegance</h3>
+                    <div class="product-price">$22.99</div>
+                    <p class="product-description">Classic French tips with a modern twist. Timeless elegance for any occasion.</p>
+                    <button class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1607779097338-8e5f4b6c6d0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Floral Fantasy</h3>
+                    <div class="product-price">$26.99</div>
+                    <p class="product-description">Delicate hand-painted flowers on a soft pink base. Spring perfection.</p>
+                    <button class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Bold & Beautiful</h3>
+                    <div class="product-price">$28.99</div>
+                    <p class="product-description">Vibrant colors and geometric patterns for the fashion-forward individual.</p>
+                    <button class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="container" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Choose Your Style</h3>
+                <p>Browse our collections and select your favorite nail designs. We offer sizes for all nail shapes.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Apply in Minutes</h3>
+                <p>Clean your nails, apply the adhesive tabs, and press on your new nails. No drying time needed!</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Shine & Reuse</h3>
+                <p>Wear for 7-14 days, then gently remove and store. Our nails can be reused 3-5 times!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About So ShinaiLit</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Where Nail Art Meets Convenience</h3>
+                    <p>Founded in 2023, So ShinaiLit began with a simple idea: everyone deserves to have beautiful, creative nails without spending hours at a salon or breaking the bank.</p>
+                    <p>Our press-on nails are crafted with high-quality materials and attention to detail. Each set is designed to look like a professional salon manicure but can be applied in minutes at home.</p>
+                    <p>We're passionate about self-expression through nail art and believe that your nails should be as unique as you are.</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Get in Touch</a>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Customer Love</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"These nails lasted through my entire vacation! I got so many compliments. Will definitely be ordering more sets!"</p>
+                    <div class="testimonial-author">- Jessica M.</div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a busy mom, I don't have time for salon appointments. So ShinaiLit nails are my secret to always looking put together!"</p>
+                    <div class="testimonial-author">- Sarah T.</div>
+                    <div class="rating">★★★★★</div>
+       
